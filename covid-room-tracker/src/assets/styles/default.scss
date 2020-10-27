@@ -1,8 +1,23 @@
-.header {
-  color: #006747;
-  font-size: 55px;
-}
+$defaultGreen: #006747;
+$defaultGrey: #525252;
+
 .body {
-  color: #525252;
-  font-size: 30px;
+  color: $defaultGrey;
+}
+
+.default-green {
+  color: $defaultGreen;
+}
+
+.default-grey {
+  color: $defaultGrey;
+}
+
+.overflow-set {
+  overflow: auto;
+}
+
+.shadow {
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.025),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
