@@ -1,0 +1,22 @@
+@import "../../../assets/styles/default.scss";
+@import "../../../assets/styles/fonts.scss";
+
+.btn-login {
+    padding: 7px 120px;
+    font-size: 24px;    
+    border-radius: 0px;
+    border: 2px solid;
+    border-color: $defaultGreen;
+}
+
+.btn-no_border_just_text{
+    font-size: 26px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.picture-second_image_on_frong_page{
+    width: 619px;
+    height: 371px;
+    background-image: url("../../../assets/Homepage/second_portion.jpg")
+}
