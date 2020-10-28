@@ -82,7 +82,7 @@ export class DashBoardComponent implements OnInit {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date('10-23-2020'), 1),
-      title: '3 Day Event',
+      title: 'Meeting',
       resizable: {
         beforeStart: true,
         afterEnd: true,
