@@ -1,57 +1,63 @@
-<div class = "container-fluid mx-auto">
-    <div class = "row allign-items-center">
-        <div class = "col-md-6 ml-0 p-0">
-                <img src="/assets/Homepage/main_top.png" class = "img-fluid">
-        </div>
-        <div class="col-lg-5 mt-5 ml-5 p-5">
-            <div class="p-5 default-bold default-green">
-                <h1>COVID-19 ROOM</h1>
-                <div class= "default-thin">
-                    <h3>TRACKER</h3>
-                </div>
-                <div class ="mt-5 default-thin default-grey" >
-                    <p>Keep yourself and your co-workers safe by keeping track of your contact with COVID-19.</p>
-                </div>
-            </div>
-            <div class = "row">
-                <div class= "col-lg-5 text-center ml-5">
-                    <a [routerLink]="['/login']"> 
-                    <button type = "submit" class="btn btn-login btn-lg default-thin default-green" role="button" aria-disabled="true">LOGIN</button>
-                </a>
-                </div>
-            </div>
-            <div class = "row">
-                <div class= "col-lg-5 text-center mt-4 ml-4">
-                    <button type = "submit"  class="btn btn-noborderjusttext btn-lg mr-5 default-thin default-grey" role="button" aria-disabled="true">REGISTER</button>
-                </div>
-            </div>           
-        </div>
+<div class="container-fluid mx-auto">
+  <div class="row allign-items-center">
+    <div class="col-md-6 ml-0 p-0">
+      <img src="/assets/Homepage/main_top.png" class="img-fluid" />
     </div>
-    <div class = "row">
-        <div class = "col-sm-6 mt-5 mb-0 text-right default-green default-thin">
-            <h1>FEATURES</h1>
+    <div class="col-lg-5 mt-5 ml-5 p-5">
+      <div class="p-5 default-bold default-green">
+        <h1>COVID-19 ROOM</h1>
+        <div class="default-thin">
+          <h3>TRACKER</h3>
         </div>
-        <div class = "col-lg-6 mt-0 ml-5 p-5 ">
-            <div class = "picture-second_image_on_frong_page">
-
-            </div>
+        <div class="mt-5 default-thin default-grey">
+          <p>
+            Keep yourself and your co-workers safe by keeping track of your
+            contact with COVID-19.
+          </p>
         </div>
-        <div class = "col-lg-5 p-4 mt-5 ml-5 text-left">
-            <div class = "row">
-                <a [routerLink]="['/login']"> 
-                    <button type = "submit" class ="btn btn-lg btn-no_border_just_text default-thin default-grey">TRACK WORKSPACES</button>
-                </a>
-            </div>
-            <div class = "row mt-5">
-                <a [routerLink]="['/login']"> 
-                <button type = "submit"  class="btn btn-lg btn-no_border_just_text default-thin default-grey">STAY INFORMED</button>
-                </a>
-            </div>
-            <div class = "row mt-5">
-                <a [routerLink]="['/login']"> 
-                <button type = "submit"  class="btn btn-lg btn-no_border_just_text default-thin default-grey">MANAGE ENVIRONMENTS</button>
-                </a>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-5 text-center ml-5">
+          <a routerLink="/login">
+            <button
+              class="btn btn-login btn-lg default-thin default-green"
+              role="button"
+              style="background-color: transparent"
+              aria-disabled="true"
+            >
+              LOGIN
+            </button></a
+          >
         </div>
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 mt-5 mb-0 text-right default-green default-thin">
+      <h1>FEATURES</h1>
+    </div>
+    <div class="col-lg-6 mt-0 ml-5 p-5">
+      <div class="picture-second_image_on_frong_page"></div>
+    </div>
+    <div class="col-lg-5 p-4 mt-5 ml-5 text-left">
+      <div class="row">
+        <a routerLink="/login">
+        <button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
+          >TRACK WORKSPACES</button></a
+        >
+      </div>
+      <div class="row mt-5">
+        <a routerLink="/login">
+        <button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
+          >STAY INFORMED</button></a
+        >
+      </div>
+      <div class="row mt-5">
+        <a routerLink="/login">
+        <Button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
+          >MANAGE ENVIRONMENTS</Button></a
+        >
+      </div>
+    </div>
+  </div>
 </div>
