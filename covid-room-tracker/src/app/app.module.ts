@@ -7,6 +7,7 @@ import { PublicModule } from './public/public.module';
 import { PrivateModule } from './private/private.module';
 
 import { appRoutes } from './routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { appRoutes } from './routes';
     RouterModule.forRoot(appRoutes),
     PublicModule,
     PrivateModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
