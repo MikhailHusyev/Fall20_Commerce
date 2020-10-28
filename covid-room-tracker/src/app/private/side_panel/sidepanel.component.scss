@@ -9,9 +9,8 @@ $sidepanelBackground: #ffffff;
   background-color: $sidepanelBackground;
   visibility: visible;
   z-index: 2;
-
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .sticky-height {
   height: 0px;

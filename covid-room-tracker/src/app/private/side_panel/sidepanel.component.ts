@@ -63,12 +63,12 @@ export class SidePanelComponent implements OnInit {
     {
       icon: 'person icon',
       name: 'Profile',
-      routerLink: 'replace',
+      routerLink: 'profile',
     },
     {
       icon: 'meeting_room',
-      name: 'Meeting Tracker',
-      routerLink: 'meeting',
+      name: 'Meetings',
+      routerLink: 'meetings',
     },
     {
       icon: 'healing',

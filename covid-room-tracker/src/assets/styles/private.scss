@@ -1,0 +1,14 @@
+.card-row {
+  margin-left: 18%;
+  margin-top: 3%;
+  margin-right: 5%;
+}
+$phone: 768px;
+
+@media (max-width: $phone) {
+    .card-row {
+        margin-top: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+}

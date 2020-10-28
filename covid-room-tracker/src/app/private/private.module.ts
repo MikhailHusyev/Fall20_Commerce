@@ -16,6 +16,8 @@ import { SelectRoom } from './select_room/selectroom.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { ReportComponent } from './report/report.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -38,7 +40,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     }),
   ],
   exports: [],
-  declarations: [SidePanelComponent, DashBoardComponent, SelectRoom],
+  declarations: [
+    SidePanelComponent,
+    DashBoardComponent,
+    SelectRoom,
+    ReportComponent,
+    ProfileComponent,
+  ],
   providers: [{ provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG }],
 })
 export class PrivateModule {}
