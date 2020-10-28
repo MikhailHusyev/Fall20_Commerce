@@ -1,0 +1,50 @@
+<div class="default-grey button-div fixed-top float-left">
+  <div class="row">
+    <div class="col">
+      <button mat-flat-button class="toggle-button">
+        <mat-icon (click)="toggle()"
+          ><div *ngIf="isOpen">menu icon</div>
+          <div *ngIf="!isOpen">chevron_right</div>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  class="sidepanel-container shadow top-fix"
+  [@openClose]="isOpen ? true : false"
+>
+  <div
+    class="row text-content default-grey pt-5 pl-4"
+    [routerLink]="['/' + content.routerLink]"
+    [routerLinkActive]="['active']"
+    routerLinkActive
+    *ngFor="let content of panelContents"
+    #rla="routerLinkActive"
+  >
+    <div class="col-1">
+      <mat-icon class="icon">{{ content.icon }}</mat-icon>
+    </div>
+    <div class="col">
+      <a class="float-left pr-5">{{ content.name }}</a>
+    </div>
+    <div class="col-2 triangle" *ngIf="rla.isActive">
+      <div class="arrow-left float-left"></div>
+    </div>
+  </div>
+  <div
+    class="row text-content pt-5 pb-5 pl-4 default-grey bottom-fix fixed-bottom"
+  >
+    <div class="col-1">
+      <mat-icon class="icon">exit_to_app</mat-icon>
+    </div>
+    <div class="col">
+      <a class="float-left">Logout</a>
+    </div>
+  </div>
+</div>
+
+<div
+  class="container-fluid blur"
+  [@blurBackground]="isOpen ? true : false"
+></div>

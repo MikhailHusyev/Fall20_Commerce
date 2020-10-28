@@ -1,0 +1,76 @@
+@import "../../../assets/styles/default.scss";
+$dashboardBackground: #f2f2f2;
+$selectedColor: #c1bebe;
+body {
+  background-color: $dashboardBackground;
+}
+
+.section {
+  padding: 20px 10px 10px 20px;
+  font-size: 2vw;
+  vertical-align: middle;
+}
+.date-text {
+  color: $defaultGreen;
+  font-size: 2em;
+}
+.btn-style {
+  background-color: $dashboardBackground;
+  text-align: center;
+  font-size: 1.2em;
+
+  margin: 2%;
+}
+.btn-center {
+  background-color: $dashboardBackground;
+  margin: 2%;
+  font-size: 1.2em;
+  text-align: center;
+}
+.btn-style:hover {
+  background-color: $selectedColor;
+}
+
+.button {
+  height: 62px;
+}
+
+.icon {
+  font-size: 2.3vw;
+}
+.set-color {
+  background-color: white;
+}
+
+.swiper-pagination-bullet {
+  height: 10px;
+  width: 10px;
+  padding: 5px;
+  background-color: black;
+  border-radius: 30%;
+}
+.swiper-pagination-bullet-active {
+  background-color: $defaultGreen;
+  border-radius: 30%;
+}
+
+$phone: 768px;
+
+@media (max-width: $phone) {
+  .section {
+    vertical-align: middle;
+    font-size: 3vw;
+  }
+  .card-row {
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .top-margin {
+    margin-top: 20%;
+  }
+
+  .button {
+    height: 37px;
+  }
+}

@@ -1,0 +1,79 @@
+<div class="overflow-set">
+  <side-panel></side-panel>
+  <div class="contianer-fluid">
+    <div class="row card-row top-margin items-center">
+      <div class="card shadow w-100">
+        <div class="card-body">
+          <h1 class="card-title default-green default-bold">
+            Select Meeting Date
+          </h1>
+          <hr />
+          <div class="row align-items-center">
+            <div class="float-right"></div>
+            <div class="col-md-4">
+              <p class="date-text default-thin">
+                {{ viewDate | calendarDate: view + "ViewTitle":"en" }}
+              </p>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div
+                class="btn btn-style float-right"
+                mwlCalendarNextView
+                [view]="view"
+                [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()"
+              >
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </div>
+              <div
+                class="btn btn-center float-right"
+                mwlCalendarToday
+                [(viewDate)]="viewDate"
+              >
+                Today
+              </div>
+              <div
+                class="btn btn-style float-right"
+                mwlCalendarPreviousView
+                [view]="view"
+                [(viewDate)]="viewDate"
+              >
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </div>
+            </div>
+          </div>
+          <mwl-calendar-month-view
+            style="width: 100%"
+            calendar-day-view
+            [viewDate]="viewDate"
+            [events]="events"
+            [activeDayIsOpen]="activeDayIsOpen"
+            (dayClicked)="dayClicked($event.day)"
+          >
+          </mwl-calendar-month-view>
+        </div>
+      </div>
+    </div>
+    <div class="row card-row align-items-center">
+      <div class="card shadow w-100">
+        <div class="card-body">
+          <h1 class="card-title default-thin default-green">
+            Select Meeting Room
+          </h1>
+          <hr />
+          <div class="swiper-container" [swiper]="config">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-wrapper">
+              <div *ngFor="let room of rooms" class="swiper-slide">
+                <select-room [room]="room"></select-room>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
