@@ -18,11 +18,13 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto',
 };
+
 @NgModule({
   imports: [
     RouterModule.forRoot(privateRoutes),
@@ -38,6 +40,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    BsDatepickerModule.forRoot(),
+    DatepickerModule.forRoot(),
   ],
   exports: [],
   declarations: [

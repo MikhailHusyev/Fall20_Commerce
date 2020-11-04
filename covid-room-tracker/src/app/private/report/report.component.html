@@ -2,11 +2,21 @@
   <side-panel></side-panel>
   <div class="contianer-fluid"></div>
   <div class="row card-row align-items-center">
-    <div class="card shadow w-100">
+    <div class="card shadow w-50">
       <div class="card-body">
         <h1 class="card-title default-thin default-green">Report</h1>
         <hr />
-        <div class="row align-items-center"></div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+          <h1 class="default-grey">Date Tested:</h1>
+          <input
+            type="text"
+            placeholder="Datepicker"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{ isAnimated: true }"
+          />
+          <button type="button" class="btn btn-success mt-5">Submit</button>
+        </div>
       </div>
     </div>
   </div>

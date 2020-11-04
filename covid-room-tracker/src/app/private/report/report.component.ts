@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'report',
   templateUrl: 'report.component.html',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
   constructor() {}
+  bsConfig: Partial<BsDatepickerConfig>;
 
   ngOnInit() {}
 }
