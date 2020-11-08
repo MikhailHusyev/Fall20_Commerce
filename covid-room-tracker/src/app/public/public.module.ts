@@ -4,7 +4,8 @@ import { publicRoutes } from './public.routes';
 import { HomePageComponent } from './home_page/home.component';
 import { LoginComponent } from './login_page/login.component';
 @NgModule({
-  imports: [RouterModule.forRoot(publicRoutes)],
+  imports: [RouterModule.forRoot(publicRoutes),
+            RouterModule],
   exports: [],
   declarations: [HomePageComponent, LoginComponent],
   providers: [],
