@@ -18,6 +18,10 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -38,6 +42,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    ReactiveFormsModule,
   ],
   exports: [],
   declarations: [
