@@ -1,9 +1,9 @@
 <div class="container-fluid mx-auto">
-  <div class="row allign-items-center">
-    <div class="col-md-6 ml-0 p-0">
+  <div class="row">
+    <div class="col-md-6 ml-0 p-0 picture-firt_image_on_front_page">
       <img src="/assets/Homepage/main_top.png" class="img-fluid" />
     </div>
-    <div class="col-lg-5 mt-5 ml-5 p-5">
+    <div class="col-lg-5 mt-5 ml-4 column">
       <div class="p-5 default-bold default-green">
         <h1>COVID-19 ROOM</h1>
         <div class="default-thin">
@@ -32,31 +32,42 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row column_2">
     <div class="col-sm-6 mt-5 mb-0 text-right default-green default-thin">
       <h1>FEATURES</h1>
     </div>
-    <div class="col-lg-6 mt-0 ml-5 p-5">
-      <div class="picture-second_image_on_frong_page"></div>
+    <div class="col-lg-6 mt-0 ml-1 picture-second_image_on_front_page">
+      <img
+        class="img-fluid"
+        [@fade]="state"
+        (@fade.done)="onDone($event)"
+        [src]="imageSource"
+      />
     </div>
-    <div class="col-lg-5 p-4 mt-5 ml-5 text-left">
+    <div class="col-lg-5 mt-5 ml-2 text-left">
       <div class="row">
-        <a routerLink="/login">
-        <button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
-          >TRACK WORKSPACES</button></a
+        <button
+          class="btn btn-lg btn-no_border_just_text default-thin default-grey"
+          (click)="onClick()"
         >
+          TRACK WORKSPACES
+        </button>
       </div>
       <div class="row mt-5">
-        <a routerLink="/login">
-        <button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
-          >STAY INFORMED</button></a
+        <button
+          class="btn btn-lg btn-no_border_just_text default-thin default-grey"
+          (click)="onClick2()"
         >
+          STAY INFORMED
+        </button>
       </div>
       <div class="row mt-5">
-        <a routerLink="/login">
-        <Button class="btn btn-lg btn-no_border_just_text default-thin default-grey"
-          >MANAGE ENVIRONMENTS</Button></a
+        <button
+          class="btn btn-lg btn-last_just_text default-thin default-grey"
+          (click)="onClick3()"
         >
+          MANAGE ENVIRONMENTS
+        </button>
       </div>
     </div>
   </div>
