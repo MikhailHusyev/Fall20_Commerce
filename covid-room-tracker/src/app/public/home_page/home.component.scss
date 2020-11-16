@@ -14,30 +14,73 @@ $homepageBackground: #f2f2f2;
     font-size: 26px;
     border: 0px;
     border-radius: 0px;
+    margin-left: 10%;
 }
 
-.picture-second_image_on_frong_page{
+.btn-last_just_text{
+  font-size: 26px;
+  border: 0px;
+  border-radius: 0px;
+  margin-left: 10%;
+}
+
+.picture-firt_image_on_front_page{
+  min-width: 700px;
+  min-height: 300px;
+}
+
+.picture-second_image_on_front_page{
     width: 619px;
-    height: 371px;
-    background-image: url("../../../assets/Homepage/second_portion.jpg")
+    max-height: 100px;
+    padding-left: 10%;
+    margin-top: 30%;
+    object-fit: cover;
+    
+}
+.column{
+  padding-left: 5%;
+  padding-right: 8%;
+  padding-top: 7%;
+
 }
 $phone: 768px;
 
 @media (max-width: $phone) {
-  .section {
+  .column{
+    margin-right: auto;
     vertical-align: middle;
-    font-size: 3vw;
-  }
-  .card-row {
-    margin-top: 10%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-  .top-margin {
-    margin-top: 20%;
-  }
+    padding-left: 5%;
 
-  .button {
-    height: 37px;
+  }
+  .btn-login{
+    margin-left: -35%;
+  }
+  .column_2{
+    margin-right: 40%;
+    vertical-align: middle;
+  }
+  .picture-firt_image_on_front_page{
+    z-index: -1;
+    min-height: auto;
+    min-width: auto;
+    margin-bottom: -50px;
+  }
+  .btn-no_border_just_text{
+    margin-right: 50%;
+
+  }
+  .btn-last_just_text{
+    margin-right: 50%;
+    margin-bottom: 20%;
+  }
+  .picture-second_image_on_front_page{
+    z-index: -1;
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    margin-right: 40%;
+    padding-right: 20%;
+    margin-bottom: -200px;
   }
 }
