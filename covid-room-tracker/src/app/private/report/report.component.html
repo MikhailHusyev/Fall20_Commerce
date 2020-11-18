@@ -1,20 +1,53 @@
 <div class="overflow-set">
   <side-panel></side-panel>
   <div class="contianer-fluid"></div>
-  <div class="row card-row align-items-center">
-    <div class="card shadow w-50">
+  <div class="row card-row top-margin align-items-center">
+    <div class="card shadow w-100">
       <div class="card-body">
         <h1 class="card-title default-thin default-green">Report</h1>
         <hr />
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-          <h1 class="default-grey">Date Tested:</h1>
-          <input
-            type="text"
-            placeholder="Datepicker"
-            class="form-control"
-            bsDatepicker
-          />
-          <button type="button" class="btn btn-success mt-5">Submit</button>
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <p class="">Please enter the date of your COVID-19 test.</p>
+          </div>
+          <div class="col-md-8">
+            <p class="default-green">Date:</p>
+            <form
+              [formGroup]="reportForm"
+              (ngSubmit)="onSubmit(reportForm.value)"
+            >
+              <input
+                matInput
+                placeholder="Select a date."
+                [matDatepicker]="picker"
+                formControlName="date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <p class="default-green">Result:</p>
+              <mat-radio-group
+                aria-label="Select an option"
+                formControlName="result"
+              >
+                <mat-radio-button value="1" class="mr-2"
+                  >Positive</mat-radio-button
+                >
+                <mat-radio-button value="2">Negative</mat-radio-button>
+              </mat-radio-group>
+              <br />
+              <button
+                class="btn-submit"
+                mat-raised-button
+                type="submit"
+                [disabled]="!reportForm.valid"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
@@ -7,8 +13,17 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['report.component.scss'],
 })
 export class ReportComponent implements OnInit {
-  constructor() {}
-  bsConfig: Partial<BsDatepickerConfig>;
+  reportForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
+    this.reportForm = this.formBuilder.group({
+      date: new FormControl('', Validators.required),
+      result: new FormControl('', Validators.required),
+    });
+  }
 
   ngOnInit() {}
+  onSubmit(reportForm) {
+    //TODO: This is where the submit functionality will go.
+    this.reportForm.reset();
+  }
 }
