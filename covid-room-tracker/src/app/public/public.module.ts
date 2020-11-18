@@ -3,9 +3,10 @@ import { RouterModule } from '@angular/router';
 import { publicRoutes } from './public.routes';
 import { HomePageComponent } from './home_page/home.component';
 import { LoginComponent } from './login_page/login.component';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
-  imports: [RouterModule.forRoot(publicRoutes),
-            RouterModule],
+  imports: [RouterModule.forRoot(publicRoutes), RouterModule, MatButtonModule],
   exports: [],
   declarations: [HomePageComponent, LoginComponent],
   providers: [],
