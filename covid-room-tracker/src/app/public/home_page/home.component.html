@@ -1,1 +1,93 @@
-<h1>Home Page</h1>
+<div class="container-fluid mx-auto">
+  <div class="row">
+    <div class="col-md-6 ml-0 p-0">
+      <img src="/assets/home_page/main_top.png" class="img-fluid" />
+    </div>
+    <div class="col-md-4 ml-4 column">
+      <div class="row">
+        <div class="ml-5 mt-5 default-green">
+          <h1 class="default-bold">COVID-19 ROOM</h1>
+          <h3 class="default-thin mt-2">TRACKER</h3>
+          <div class="mt-5 default-thin default-grey">
+            <p>
+              Keep yourself and your co-workers safe by keeping track of your
+              contact with COVID-19.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ml-4 mr-4 column">
+          <button
+            mat-raised-button
+            class="default-thin default-green p-3 micro-btn"
+            role="button"
+          >
+            <img
+              src="../../../assets/home_page/microsoftlogo.png"
+              class="micro-logo mr-2"
+            />
+            Sign in with Microsoft
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mt-5 pt-2 mr-0 pr-0 default-green">
+      <h1 class="txt-feature mr-0 pr-0 default-thin">FEATURES</h1>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-12 m-0 p-0">
+          <img
+            class="img-fluid scroll-image"
+            [@fade]="state"
+            (@fade.done)="onDone($event)"
+            [src]="imageSource"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p
+            [@fade]="state"
+            (@fade.done)="onDone($event)"
+            class="mt-4 default-thin default-grey txt-transition"
+          >
+            {{ textSource }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 text-left select-text mb-3">
+      <div class="row mt-3 pt-3">
+        <button
+          class="default-thin default-grey hover-green btn-transition"
+          (click)="onClick()"
+        >
+          TRACK WORKSPACES
+        </button>
+      </div>
+      <div class="row mt-3 pt-3">
+        <button
+          class="default-thin default-grey hover-green btn-transition"
+          (click)="onClick2()"
+        >
+          STAY INFORMED
+        </button>
+      </div>
+      <div class="row mt-3 pt-3">
+        <button
+          class="default-thin default-grey hover-green btn-transition"
+          (click)="onClick3()"
+        >
+          MANAGE ENVIRONMENTS
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
