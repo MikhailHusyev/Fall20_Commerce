@@ -5,7 +5,6 @@ import { privateRoutes } from './private.routes';
 import { DashBoardComponent } from './dashboard_base/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,7 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatButtonModule } from '@angular/material/button';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto',
@@ -32,7 +31,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RouterModule.forRoot(privateRoutes),
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -46,6 +44,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatNativeDateModule,
     MatRadioModule,
     ReactiveFormsModule,
+    MatButtonModule,
   ],
   exports: [],
   declarations: [
