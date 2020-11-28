@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ApplicationRef, NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PublicModule } from './public/public.module';
 import { PrivateModule } from './private/private.module';
@@ -9,16 +9,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { appRoutes } from './routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MsalInterceptor, MsalModule } from '@azure/msal-angular';
+import { environment } from 'src/environments/environment';
+import { MsalComponent } from './msal.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
   window.navigator.userAgent.indexOf('Trident/') > -1;
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MsalComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { useHash: false }),
+    RouterModule.forRoot(appRoutes, {
+      useHash: false,
+      preloadingStrategy: PreloadAllModules,
+    }),
     PublicModule,
     PrivateModule,
     BrowserAnimationsModule,
@@ -27,9 +32,11 @@ const isIE =
     MsalModule.forRoot(
       {
         auth: {
-          clientId: '59b7132a-f776-48e0-a86e-7120b66d041a',
-          authority: 'https://login.microsoftonline.com/common',
-          redirectUri: 'http://localhost:4200/profile',
+          clientId: environment.clientId,
+          authority: environment.authority,
+          redirectUri: environment.redirectUrl,
+          navigateToLoginRequestUrl: true,
+          postLogoutRedirectUri: 'http://localhost:4200/profile',
         },
         cache: {
           cacheLocation: 'localStorage',
@@ -42,6 +49,7 @@ const isIE =
         unprotectedResources: [],
         protectedResourceMap: [
           ['https://graph.microsoft.com/v1.0/me', ['user.read']],
+          ,
         ],
         extraQueryParameters: {},
       }
@@ -54,6 +62,13 @@ const isIE =
       multi: true,
     },
   ],
-  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  ngDoBootstrap(ref: ApplicationRef) {
+    if (window !== window.parent && !window.opener) {
+      ref.bootstrap(MsalComponent);
+    } else {
+      ref.bootstrap(AppComponent);
+    }
+  }
+}

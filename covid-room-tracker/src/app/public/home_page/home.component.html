@@ -1,2 +1,39 @@
-<h1>Home Page</h1>
-<button mat-raised-button (click)="login()">Login</button>
+<div class="container-fluid mx-auto">
+  <div class="row">
+    <div class="col-md-6 ml-0 p-0">
+      <img src="/assets/home_page/main_top.png" class="img-main img-fluid" />
+    </div>
+    <div class="col-md-4 column">
+      <div class="row">
+        <div class="ml-5 col-md-12">
+          <div class="mt-5 default-green">
+            <h1 class="default-bold">COVID-19 ROOM</h1>
+            <h3 class="default-thin mt-2">TRACKER</h3>
+            <div class="mt-5 default-thin default-grey">
+              <p>
+                Keep yourself and your co-workers safe by keeping track of your
+                contact with COVID-19.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 mb-5">
+        <div class="ml-5 col-md-12">
+          <button
+            type="button"
+            mat-raised-button
+            class="default-thin default-green p-3 micro-btn"
+            (click)="login()"
+          >
+            <img
+              src="../../../assets/home_page/microsoftlogo.png"
+              class="micro-logo mr-2"
+            />
+            Sign in with Microsoft
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

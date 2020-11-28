@@ -17,15 +17,19 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MsalInterceptor } from '@azure/msal-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto',
 };
+
 @NgModule({
   imports: [
     RouterModule.forRoot(privateRoutes),
@@ -40,6 +44,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    BsDatepickerModule.forRoot(),
+    DatepickerModule.forRoot(),
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,

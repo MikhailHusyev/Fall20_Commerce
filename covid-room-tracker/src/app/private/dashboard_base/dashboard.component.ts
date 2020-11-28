@@ -9,7 +9,12 @@ import {
   CalendarEventAction,
   CalendarView,
 } from 'angular-calendar';
+import { MsalService } from '@azure/msal-angular';
+import { HttpClient } from '@angular/common/http';
+import { AuthError, InteractionRequiredAuthError } from 'msal';
 
+const GRAPH_ENDPOINT =
+  'https://graph.microsoft.com/v1.0/me/events?$select=subject,body,bodyPreview,organizer,attendees,start,end,location';
 @Component({
   selector: 'dashboard',
   templateUrl: 'dashboard.component.html',
@@ -17,8 +22,12 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class DashBoardComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
+  constructor(private authService: MsalService, private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getEvents();
+  }
+  event;
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   innerWidth: Number;
@@ -105,5 +114,14 @@ export class DashBoardComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  getEvents() {
+    this.http
+      .get(GRAPH_ENDPOINT)
+      .toPromise()
+      .then((event) => {
+        this.event = event;
+      });
   }
 }

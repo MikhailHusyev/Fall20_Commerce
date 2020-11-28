@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'report',
   templateUrl: 'report.component.html',

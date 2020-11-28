@@ -17,30 +17,11 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile() {
-    this.http.get(GRAPH_ENDPOINT).subscribe({
-      next: (profile) => {
+    this.http
+      .get(GRAPH_ENDPOINT)
+      .toPromise()
+      .then((profile) => {
         this.profile = profile;
-      },
-      error: (err: AuthError) => {
-        // If there is an interaction required error,
-        // call one of the interactive methods and then make the request again.
-        if (
-          InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)
-        ) {
-          this.authService
-            .acquireTokenPopup({
-              scopes: this.authService.getScopesForEndpoint(GRAPH_ENDPOINT),
-            })
-            .then(() => {
-              this.http
-                .get(GRAPH_ENDPOINT)
-                .toPromise()
-                .then((profile) => {
-                  this.profile = profile;
-                });
-            });
-        }
-      },
-    });
+      });
   }
 }

@@ -55,25 +55,5 @@
         </div>
       </div>
     </div>
-    <div class="row card-row align-items-center">
-      <div class="card shadow w-100">
-        <div class="card-body">
-          <h1 class="card-title default-thin default-green">
-            Select Meeting Room
-          </h1>
-          <hr />
-          <div class="swiper-container" [swiper]="config">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-wrapper">
-              <div *ngFor="let room of rooms" class="swiper-slide">
-                <select-room [room]="room"></select-room>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
