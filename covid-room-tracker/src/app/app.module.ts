@@ -36,7 +36,7 @@ const isIE =
           authority: environment.authority,
           redirectUri: environment.redirectUrl,
           navigateToLoginRequestUrl: true,
-          postLogoutRedirectUri: 'http://localhost:4200/profile',
+          postLogoutRedirectUri: environment.returnUrl,
         },
         cache: {
           cacheLocation: 'localStorage',
