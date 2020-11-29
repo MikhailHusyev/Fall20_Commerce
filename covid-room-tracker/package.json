@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --output-path angularapp  --aot --prod"
+  },
+  "engines": {
+    "node": "v12.16.3",
+    "npm": "6.14.5"
   },
   "private": true,
   "dependencies": {
@@ -15,8 +20,10 @@
     "@angular-devkit/schematics": "^10.2.0",
     "@angular/animations": "^10.2.3",
     "@angular/cdk": "^10.2.7",
+    "@angular/cli": "^11.0.2",
     "@angular/common": "^10.2.3",
     "@angular/compiler": "^10.2.3",
+    "@angular/compiler-cli": "^10.2.3",
     "@angular/core": "^10.2.3",
     "@angular/forms": "^10.2.3",
     "@angular/material": "^10.2.7",
@@ -26,18 +33,22 @@
     "@azure/msal-angular": "^1.1.2",
     "angular-calendar": "^0.28.22",
     "date-fns": "^2.16.1",
+    "express": "^4.17.1",
     "msal": "^1.4.4",
     "ngx-bootstrap": "^6.2.0",
     "ngx-swiper-wrapper": "10.0.0",
+    "path": "^0.12.7",
     "rxjs": "~6.6.3",
     "save": "^2.4.0",
+    "server": "^1.0.31",
     "swiper": "^6.3.5",
     "tslib": "^2.0.3",
+    "typescript": "^4.0.5",
     "zone.js": "^0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1002.0",
-    "@angular/cli": "~10.2.0",
+    "@angular/cli": "^11.0.2",
     "@angular/compiler-cli": "^10.2.3",
     "@types/jasmine": "^3.6.1",
     "@types/jasminewd2": "~2.0.8",
