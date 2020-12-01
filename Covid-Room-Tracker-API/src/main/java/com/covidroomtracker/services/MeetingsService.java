@@ -1,0 +1,19 @@
+package com.covidroomtracker.services;
+
+import com.covidroomtracker.entities.MeetingsEntity;
+import com.covidroomtracker.repositories.MeetingsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.sql.Timestamp;
+
+@Service
+public class MeetingsService {
+
+    @Autowired
+    private MeetingsRepository meetingsRepository;
+
+    public List<MeetingsEntity> getFourteenDayMeetings(String organizationId){
+        return meetingsRepository.findPriorMeetings(organizationId);
+    }
+}
