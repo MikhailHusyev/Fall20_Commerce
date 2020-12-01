@@ -2,12 +2,14 @@ package com.covidroomtracker.controllers;
 
 import com.covidroomtracker.entities.UserEntity;
 import com.covidroomtracker.repositories.UserRepository;
+import com.covidroomtracker.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-
+import java.sql.Time;
+import java.sql.Timestamp;
 
 
 @RequestMapping("/api/v1/users")
@@ -15,11 +17,11 @@ import java.sql.Date;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
-    @GetMapping("/date")
-    public void getChangeDate(@RequestParam("date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date){
-
+    @GetMapping("/last_updated/{id}")
+    public Timestamp getChangeDate(@PathVariable("id") String id){
+        return userService.getLastUpdatedTime(id);
     }
 
     @PostMapping("/date")

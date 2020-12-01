@@ -1,18 +1,19 @@
 package com.covidroomtracker.models;
 
-public class Meetings {
+public class Meeting {
+
     private String organizationId;
 
-    public Meetings(){}
+    public Meeting(){}
+    public Meeting(String organizationId){
+        this.setOrganizationId(organizationId);
+    }
+
     public String getOrganizationId() {
         return organizationId;
     }
 
     public void setOrganizationId(String organizationId) {
         this.organizationId = organizationId;
-    }
-
-    public Meetings(String organizationId){
-        this.setOrganizationId(organizationId);
     }
 }
