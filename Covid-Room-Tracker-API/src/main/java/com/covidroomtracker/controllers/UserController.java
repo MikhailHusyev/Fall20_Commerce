@@ -1,20 +1,27 @@
 package com.covidroomtracker.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.covidroomtracker.entities.UserEntity;
+import com.covidroomtracker.repositories.UserRepository;
+import com.covidroomtracker.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 
 @RequestMapping("/api/v1/users")
 @RestController
 public class UserController {
 
-    
-    @GetMapping("/date")
-    public void getChangeDate(){
+    @Autowired
+    private UserService userService;
 
-        String test = "";
+    @GetMapping("/last_updated/{id}")
+    public Timestamp getChangeDate(@PathVariable("id") String id){
+        return userService.getLastUpdatedTime(id);
     }
 
     @PostMapping("/date")
