@@ -32,7 +32,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(privateRoutes),
+    RouterModule.forRoot(privateRoutes, { useHash: false }),
     MatIconModule,
     MatToolbarModule,
     BrowserModule,
