@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   contaminationCheck() {
     let combined =
       environment.apiBaseUrl +
-      'api/v1/users/result/' +
+      '/api/v1/users/result/' +
       localStorage.getItem('profile');
     this.http.get(combined).subscribe({
       next: (result: { result }) => {
