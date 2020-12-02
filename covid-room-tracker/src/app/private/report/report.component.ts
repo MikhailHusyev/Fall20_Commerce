@@ -7,6 +7,10 @@ import {
 } from '@angular/forms';
 
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { Report } from '../models/report.model';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { concat } from 'rxjs';
 @Component({
   selector: 'report',
   templateUrl: 'report.component.html',
@@ -14,7 +18,10 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 })
 export class ReportComponent implements OnInit {
   reportForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  report: Report;
+  color: 'green';
+  spinner: boolean = false;
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.reportForm = this.formBuilder.group({
       date: new FormControl('', Validators.required),
       result: new FormControl('', Validators.required),
@@ -22,8 +29,20 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit() {}
-  onSubmit(reportForm) {
-    //TODO: This is where the submit functionality will go.
+  onSubmit(reportForm: Report) {
+    reportForm.fk_uid = localStorage.getItem('profile');
+    reportForm.fk_oid = 'Commerce Bank';
+    this.http
+      .post<Report>('http://localhost:8080/api/v1/reports/report', reportForm)
+      .subscribe((Response) => {
+        this.hideLoader();
+      });
+
+    this.hideLoader();
     this.reportForm.reset();
+  }
+
+  hideLoader() {
+    this.spinner = !this.spinner;
   }
 }

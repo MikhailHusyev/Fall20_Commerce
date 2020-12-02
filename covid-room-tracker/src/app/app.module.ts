@@ -48,7 +48,10 @@ const isIE =
         consentScopes: ['user.read', 'openid', 'profile'],
         unprotectedResources: [],
         protectedResourceMap: [
-          ['https://graph.microsoft.com/v1.0/me', ['user.read']],
+          [
+            'https://graph.microsoft.com/v1.0/me',
+            ['user.read', 'Calendars.Read', 'Calendars.ReadWrite'],
+          ],
         ],
         extraQueryParameters: {},
       }

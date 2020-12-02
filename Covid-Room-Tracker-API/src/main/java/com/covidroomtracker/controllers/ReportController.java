@@ -9,6 +9,7 @@ import com.covidroomtracker.repositories.ReportRepository;
 import com.covidroomtracker.services.ReportService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/v1/reports")
 @RestController
+@CrossOrigin(origins="*")
 public class ReportController {
 
 	@Autowired
@@ -28,13 +30,8 @@ public class ReportController {
 		return this.reportService.getCovidReportUser("1");
 	}
 	
-	@GetMapping("/{oid}")
-	public void getReports(@PathVariable("oid") String userId){
-		String test ="test";
-	}
-
 	@PostMapping("/report")
-	public void addReport(@RequestBody Report report){
-		String test = "test";
+	public void addReport(@RequestBody ReportEntity report) {
+		this.reportService.addCovidReport(report);
 	}
 }

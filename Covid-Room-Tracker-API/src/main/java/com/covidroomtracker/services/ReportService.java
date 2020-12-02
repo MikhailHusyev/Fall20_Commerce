@@ -19,7 +19,7 @@ public class ReportService {
         return this.reportRepository.findAll();
     }
 
-    public List<ReportEntity> getCovidReportsForWeek(String oid){
-        return null;
-    }
+   public void addCovidReport(ReportEntity report){
+       reportRepository.save(report);
+   } 
 }

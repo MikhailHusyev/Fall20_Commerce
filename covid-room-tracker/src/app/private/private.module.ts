@@ -25,6 +25,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MsalInterceptor } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProfileService } from './services/profile.service';
+import { MeetingService } from './services/meetings.service';
+
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto',
@@ -51,6 +55,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [],
   declarations: [
@@ -60,6 +65,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ReportComponent,
     ProfileComponent,
   ],
-  providers: [{ provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG }],
+  providers: [
+    { provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG },
+    ProfileService,
+    MeetingService,
+  ],
 })
 export class PrivateModule {}

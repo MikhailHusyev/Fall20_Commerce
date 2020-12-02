@@ -25,18 +25,21 @@ public class MeetingsEntity {
     private String fk_rmid;
     @Column(name="fk_oid")
     private String fk_oid;
+    @Column(name = "mid") 
+    private String mid;
 
     public MeetingsEntity(){
         super();
     }
 
-    public MeetingsEntity(int id, Timestamp meeting_date, String fk_uid, String fk_rmid, String fk_oid) {
+	public MeetingsEntity(int id, Timestamp meeting_date, String fk_uid, String fk_rmid, String fk_oid, String mid) {
         super();
         this.setId(id);
-        this.setMeetingDate(meeting_date);
+        this.setMeeting_date(meeting_date);
         this.setFk_uid(fk_uid);
         this.setFk_rmid(fk_rmid);
         this.setFk_oid(fk_oid);
+        this.setMid(mid);
     }
 
     public String getFk_oid() {
@@ -60,11 +63,11 @@ public class MeetingsEntity {
     public void setFk_rmid(String fk_rmid) { this.fk_rmid = fk_rmid;
     }
 
-    public Timestamp getMeetingDate() {
+    public Timestamp getMeeting_date() {
         return meeting_date;
     }
 
-    public void setMeetingDate(Timestamp meeting_date) {
+    public void setMeeting_date(Timestamp meeting_date) {
         this.meeting_date = meeting_date;
     }
 
@@ -75,5 +78,12 @@ public class MeetingsEntity {
     public void setId(int id) {
         this.id = id;
     }
+    public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 
 }
