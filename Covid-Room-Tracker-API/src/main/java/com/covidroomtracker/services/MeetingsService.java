@@ -15,6 +15,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.sql.Timestamp;
 
@@ -48,9 +49,28 @@ public class MeetingsService {
     }
 
     public void insertMeetings(List<MeetingsEntity> meetings){
-        try{
 
-            meetingsRepository.saveAll(meetings);
+        try{
+            List<String> midList = new ArrayList<String>();
+            meetings.forEach((meeting) -> midList.add(meeting.getMid()));
+
+            List<String> existingMeetings = meetingsRepository.getExistingMeetings(midList);
+
+            List<String> meetingsIds = new ArrayList<String>();
+            for(MeetingsEntity entity: meetings){
+               meetingsIds.add(entity.getMid());
+            }
+
+            meetingsIds.remove(existingMeetings);
+            List<MeetingsEntity> goodMeetings = new ArrayList<MeetingsEntity>();
+            for(MeetingsEntity entity: meetings){
+                if(meetingsIds.contains(entity.getMid())){
+                    goodMeetings.add(entity);
+                }
+            }
+            
+            
+            meetingsRepository.saveAll(goodMeetings);
         }catch(Exception ex){
 
         }

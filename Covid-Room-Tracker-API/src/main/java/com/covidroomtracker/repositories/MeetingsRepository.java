@@ -23,4 +23,7 @@ public interface MeetingsRepository extends JpaRepository<MeetingsEntity,Long> {
 
     @Query(value = "select * from meetings m where m.fk_uid = :userId", nativeQuery = true)
     MeetingsEntity getUserMeetings(@Param("userId") String userId);
+
+    @Query(value = "select mid from meetings m where m.mid in :meetings", nativeQuery = true)
+    List<String> getExistingMeetings(@Param("meetings") List<String> meetings);
 }
