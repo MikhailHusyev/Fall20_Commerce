@@ -37,11 +37,11 @@ export class DashBoardComponent implements OnInit {
     private meetingService: MeetingService
   ) {}
 
-  ngOnInit() {
-    this.getEvents();
-  }
+  ngOnInit() {}
+
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
+  CalendarView = CalendarView;
   innerWidth: Number;
   private pagination: PaginationOptions = {
     el: '.swiper-pagination',
@@ -121,6 +121,14 @@ export class DashBoardComponent implements OnInit {
       },
     });
   }
+  changeDay(date: Date) {
+    this.viewDate = date;
+    this.view = CalendarView.Day;
+  }
+  setView(view: CalendarView) {
+    this.view = view;
+    this.view = CalendarView.Month;
+  }
   insertMeetings(event) {
     for (let value of event.value) {
       let calendarEvent: CalendarEvent = {
@@ -131,6 +139,7 @@ export class DashBoardComponent implements OnInit {
           value.subject +
           ' Location: ' +
           value.location?.displayName,
+        id: value.id,
       };
       let meeting: Meeting = {
         fk_oid: 'Commerce Bank',
@@ -140,7 +149,9 @@ export class DashBoardComponent implements OnInit {
         fk_rmid: value.location?.displayName,
       };
 
-      this.events.push(calendarEvent);
+      if (!this.events.find((event) => event.id == calendarEvent.id)) {
+        this.events.push(calendarEvent);
+      }
       this.meetings.push(meeting);
     }
     this.meetingService.addMeetings(this.meetings);

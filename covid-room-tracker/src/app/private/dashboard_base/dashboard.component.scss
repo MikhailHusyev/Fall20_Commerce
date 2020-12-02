@@ -4,7 +4,13 @@ $selectedColor: #c1bebe;
 body {
   background-color: $dashboardBackground;
 }
-
+.micro-btn {
+  font-size: 0.75em;
+}
+.micro-logo {
+  height: 25px;
+  width: 25px;
+}
 .section {
   padding: 20px 10px 10px 20px;
   font-size: 2vw;

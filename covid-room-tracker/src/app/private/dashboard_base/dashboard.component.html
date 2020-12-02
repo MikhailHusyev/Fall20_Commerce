@@ -15,7 +15,32 @@
                 {{ viewDate | calendarDate: view + "ViewTitle":"en" }}
               </p>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div
+                class="btn btn-style float-right"
+                mwlCalendarNextView
+                [view]="view"
+                [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()"
+                (click)="getEvents()"
+              >
+                <img
+                  src="../../../assets/home_page/outlook.png"
+                  class="micro-logo mr-2"
+                />
+                Sync With Outlook
+              </div>
+              <div [ngSwitch]="view">
+                <div
+                  *ngSwitchCase="'day'"
+                  class="btn btn-style float-right"
+                  (click)="setView(CalendarView.Week)"
+                >
+                  Month View
+                </div>
+              </div>
+            </div>
+
             <div class="col-md-4">
               <div
                 class="btn btn-style float-right"
@@ -43,15 +68,24 @@
               </div>
             </div>
           </div>
-          <mwl-calendar-month-view
-            style="width: 100%"
-            calendar-day-view
-            [viewDate]="viewDate"
-            [events]="events"
-            [activeDayIsOpen]="activeDayIsOpen"
-            (dayClicked)="dayClicked($event.day)"
-          >
-          </mwl-calendar-month-view>
+          <div [ngSwitch]="view">
+            <mwl-calendar-month-view
+              *ngSwitchCase="'month'"
+              style="width: 100%"
+              calendar-day-view
+              [viewDate]="viewDate"
+              [events]="events"
+              [activeDayIsOpen]="activeDayIsOpen"
+              (dayClicked)="changeDay($event.day.date)"
+            >
+            </mwl-calendar-month-view>
+            <mwl-calendar-day-view
+              *ngSwitchCase="'day'"
+              [viewDate]="viewDate"
+              [events]="events"
+            >
+            </mwl-calendar-day-view>
+          </div>
         </div>
       </div>
     </div>
