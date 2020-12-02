@@ -10,6 +10,7 @@ import {
   isSameDay,
   isSameMonth,
   addHours,
+  endOfDay,
 } from 'date-fns';
 import {
   CalendarEvent,
@@ -22,6 +23,7 @@ import { AuthError, InteractionRequiredAuthError } from 'msal';
 import { MeetingService } from '../services/meetings.service';
 import { Meeting } from '../models/meeting.model';
 import { title } from 'process';
+import { endOf } from 'ngx-bootstrap/chronos';
 
 const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me/events';
 @Component({
@@ -37,7 +39,9 @@ export class DashBoardComponent implements OnInit {
     private meetingService: MeetingService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getEvents();
+  }
 
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
@@ -132,8 +136,8 @@ export class DashBoardComponent implements OnInit {
   insertMeetings(event) {
     for (let value of event.value) {
       let calendarEvent: CalendarEvent = {
-        start: subDays(startOfDay(new Date(value.start.dateTime)), 0),
-        end: subDays(startOfDay(new Date(value.end.dateTime)), 0),
+        start: new Date(value.start.dateTime),
+        end: new Date(value.end.dateTime),
         title:
           'Subject: ' +
           value.subject +
