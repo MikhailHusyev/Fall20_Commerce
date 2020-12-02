@@ -3,7 +3,7 @@ import { IRoom } from '../models/room.model';
 import { SwiperOptions } from 'swiper';
 import { PaginationOptions } from 'swiper/types/components/pagination';
 import { ScrollbarOptions } from 'swiper/types/components/scrollbar';
-import { startOfDay, subDays, addDays, isSameDay, isSameMonth } from 'date-fns';
+import { startOfDay, subDays, addDays, isSameDay, isSameMonth, addHours } from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -22,7 +22,7 @@ const GRAPH_ENDPOINT =
   encapsulation: ViewEncapsulation.None,
 })
 export class DashBoardComponent implements OnInit {
-  constructor(private authService: MsalService, private http: HttpClient) {}
+  constructor(private authService: MsalService, private http: HttpClient,) {}
 
   ngOnInit() {
     this.getEvents();
@@ -98,7 +98,20 @@ export class DashBoardComponent implements OnInit {
       },
       draggable: true,
     },
+    {
+      start: addHours(startOfDay(new Date()), 2),
+      end: addHours(new Date(), 2),
+      title: 'editable and deletable event',
+      actions: this.actions,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+
   ];
+  
   activeDayIsOpen: boolean = true;
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (
@@ -124,6 +137,7 @@ export class DashBoardComponent implements OnInit {
         this.event = event;
       });
   }
+  
 
   
 }
