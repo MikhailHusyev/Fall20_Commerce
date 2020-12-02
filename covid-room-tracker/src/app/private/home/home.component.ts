@@ -21,6 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   displayElement = false;
-
+ç
   ngOnInit() {}
 }
