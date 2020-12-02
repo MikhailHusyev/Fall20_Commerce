@@ -3,13 +3,27 @@ import { IRoom } from '../models/room.model';
 import { SwiperOptions } from 'swiper';
 import { PaginationOptions } from 'swiper/types/components/pagination';
 import { ScrollbarOptions } from 'swiper/types/components/scrollbar';
-import { startOfDay, subDays, addDays, isSameDay, isSameMonth } from 'date-fns';
+import {
+  startOfDay,
+  subDays,
+  addDays,
+  isSameDay,
+  isSameMonth,
+  addHours,
+} from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventAction,
   CalendarView,
 } from 'angular-calendar';
+import { MsalService } from '@azure/msal-angular';
+import { HttpClient } from '@angular/common/http';
+import { AuthError, InteractionRequiredAuthError } from 'msal';
+import { MeetingService } from '../services/meetings.service';
+import { Meeting } from '../models/meeting.model';
+import { title } from 'process';
 
+const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me/events';
 @Component({
   selector: 'dashboard',
   templateUrl: 'dashboard.component.html',
@@ -17,34 +31,18 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class DashBoardComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
+  constructor(
+    private authService: MsalService,
+    private http: HttpClient,
+    private meetingService: MeetingService
+  ) {}
+
+  ngOnInit() {
+    this.getEvents();
+  }
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   innerWidth: Number;
-  rooms: Array<IRoom> = [
-    {
-      roomImage:
-        'https://media.architecturaldigest.com/photos/56b524de4ac3d842677b9ac0/master/w_2323,h_1548,c_limit/home-office-01.jpg',
-      roomName: 'Ruby',
-    },
-    {
-      roomImage:
-        'https://www.ikea.com/images/room-with-a-white-desk-placed-centrally-matching-tall-bookca-b498fcb9b57a8d6397b5970eea5a20bd.jpg',
-      roomName: 'Cobol',
-    },
-    {
-      roomImage:
-        'https://d24z4d3zypmncx.cloudfront.net/BlogPosts/essential-advice-on-meeting-room-acoustics/images/essential-advice-on-meeting-room-acoustics_header.png',
-      roomName: 'Java',
-    },
-    {
-      roomImage:
-        'https://res.cloudinary.com/peerspace-inc/image/upload/zkrawluextj3x7n5gedl.jpg',
-      roomName: 'Go',
-    },
-  ];
-
   private pagination: PaginationOptions = {
     el: '.swiper-pagination',
     clickable: true,
@@ -78,18 +76,9 @@ export class DashBoardComponent implements OnInit {
       onClick: ({ event }: { event: CalendarEvent }): void => {},
     },
   ];
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date('10-23-2020'), 1),
-      title: 'Meeting',
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  events: CalendarEvent[] = [];
+
+  meetings: Meeting[] = [];
   activeDayIsOpen: boolean = true;
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (
@@ -105,5 +94,55 @@ export class DashBoardComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  getEvents() {
+    this.http.get(GRAPH_ENDPOINT).subscribe({
+      next: (event) => {
+        this.insertMeetings(event);
+      },
+      error: (err: AuthError) => {
+        // If there is an interaction required error,
+        // call one of the interactive methods and then make the request again.
+        if (
+          InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)
+        ) {
+          this.authService
+            .acquireTokenPopup({
+              scopes: this.authService.getScopesForEndpoint(GRAPH_ENDPOINT),
+            })
+            .then(() => {
+              this.http
+                .get(GRAPH_ENDPOINT)
+                .toPromise()
+                .then((event) => this.insertMeetings(event));
+            });
+        }
+      },
+    });
+  }
+  insertMeetings(event) {
+    for (let value of event.value) {
+      let calendarEvent: CalendarEvent = {
+        start: subDays(startOfDay(new Date(value.start.dateTime)), 0),
+        end: subDays(startOfDay(new Date(value.end.dateTime)), 0),
+        title:
+          'Subject: ' +
+          value.subject +
+          ' Location: ' +
+          value.location?.displayName,
+      };
+      let meeting: Meeting = {
+        fk_oid: 'Commerce Bank',
+        fk_uid: localStorage.getItem('profile'),
+        meeting_date: value.start.dateTime,
+        mid: value.id,
+        fk_rmid: value.location?.displayName,
+      };
+
+      this.events.push(calendarEvent);
+      this.meetings.push(meeting);
+    }
+    this.meetingService.addMeetings(this.meetings);
   }
 }

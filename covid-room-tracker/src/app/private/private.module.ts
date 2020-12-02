@@ -5,7 +5,6 @@ import { privateRoutes } from './private.routes';
 import { DashBoardComponent } from './dashboard_base/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,11 +17,18 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
 import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MsalInterceptor } from '@azure/msal-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProfileService } from './services/profile.service';
+import { MeetingService } from './services/meetings.service';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -31,10 +37,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(privateRoutes),
+    RouterModule.forRoot(privateRoutes, { useHash: false }),
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -50,6 +55,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatNativeDateModule,
     MatRadioModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [],
   declarations: [
@@ -58,7 +65,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SelectRoom,
     ReportComponent,
     ProfileComponent,
+    HomeComponent,
   ],
-  providers: [{ provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG }],
+  providers: [
+    { provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG },
+    ProfileService,
+    MeetingService,
+  ],
 })
 export class PrivateModule {}

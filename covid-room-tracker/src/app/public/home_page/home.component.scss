@@ -9,7 +9,10 @@ $homepageBackground: #f2f2f2;
   border: 2px solid;
   border-color: $defaultGreen;
 }
-
+.img-main {
+  min-height: 100vh;
+  object-fit: cover;
+}
 .column {
   margin-top: 7%;
   font-size: 1.5em;
@@ -74,13 +77,15 @@ $phone: 768px;
 @media (max-width: $phone) {
   .column {
     margin-top: 7%;
-    font-size: 1.5em;
   }
   h1 {
     font-size: 2em;
   }
   h3 {
     font-size: 1.5em;
+  }
+  .img-main {
+    min-height: 50vh;
   }
   .txt-feature {
     float: left;

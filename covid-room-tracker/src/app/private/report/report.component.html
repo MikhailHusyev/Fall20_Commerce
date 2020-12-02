@@ -32,10 +32,10 @@
                 aria-label="Select an option"
                 formControlName="result"
               >
-                <mat-radio-button value="1" class="mr-2"
+                <mat-radio-button value="true" class="mr-2"
                   >Positive</mat-radio-button
                 >
-                <mat-radio-button value="2">Negative</mat-radio-button>
+                <mat-radio-button value="false">Negative</mat-radio-button>
               </mat-radio-group>
               <br />
               <button
@@ -46,6 +46,12 @@
               >
                 Submit
               </button>
+              <mat-spinner
+                class="spinner"
+                [diameter]="50"
+                [color]="color"
+                *ngIf="spinner"
+              ></mat-spinner>
             </form>
           </div>
         </div>

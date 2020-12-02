@@ -7,6 +7,7 @@ import {
   animate,
   state,
 } from '@angular/animations';
+import { MsalService } from '@azure/msal-angular';
 @Component({
   selector: 'side-panel',
   templateUrl: 'sidepanel.component.html',
@@ -53,12 +54,12 @@ import {
   ],
 })
 export class SidePanelComponent implements OnInit {
-  constructor() {}
+  constructor(private authService: MsalService) {}
   panelContents: Array<ISidePanel> = [
     {
       icon: 'home',
       name: 'Home',
-      routerLink: 'dashboard',
+      routerLink: 'home',
     },
     {
       icon: 'person icon',
@@ -108,5 +109,9 @@ export class SidePanelComponent implements OnInit {
       }
     }
     this.wasInside = false;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
