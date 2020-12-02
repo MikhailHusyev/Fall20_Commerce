@@ -4,4 +4,5 @@ export const environment = {
   authority: 'https://login.microsoftonline.com/common',
   redirectUrl: 'https://covid-room-tracker.herokuapp.com/profile',
   returnUrl: 'https://covid-room-tracker.herokuapp.com',
+  apiBaseUrl: 'https://covid-room-tracker-spring-api.herokuapp.com',
 };
