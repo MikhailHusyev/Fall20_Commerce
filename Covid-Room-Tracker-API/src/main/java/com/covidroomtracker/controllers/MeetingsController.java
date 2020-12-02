@@ -5,7 +5,9 @@ import com.covidroomtracker.entities.MeetingsEntity;
 import com.covidroomtracker.models.Meeting;
 import com.covidroomtracker.services.MeetingsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -16,10 +18,6 @@ public class MeetingsController {
     @Autowired
     private MeetingsService meetingsService;
 
-    @GetMapping
-    public List<MeetingsEntity> getMeetings(@RequestBody Meeting meeting){
-        return meetingsService.getFourteenDayMeetings(meeting.getOrganizationId());
-    }
 
     @PostMapping
     public void addMeetings(@RequestBody List<Meeting> meetings){

@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 
 @Repository
+
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query(value="SELECT last_updated FROM users WHERE id = :userId", nativeQuery = true)
     Timestamp getLastUpdated(@Param("userId") String userId);
+
 }

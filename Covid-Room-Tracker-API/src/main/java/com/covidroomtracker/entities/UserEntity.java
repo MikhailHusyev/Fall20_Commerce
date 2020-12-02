@@ -11,34 +11,34 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
     @Column(name = "last_updated")
     private Timestamp last_updated;
 
-    @Column(name = "date")
-    private Timestamp date;
 
     @Column(name = "fk_oid")
-    private String fk_oid;
+    private int fk_oid;
+
+    @Column(name ="uid")
+    private String uid;
 
     public UserEntity() {super(); }
 
-    public UserEntity(int id, Timestamp date, Timestamp last_updated, String fk_oid){
+    public UserEntity(String id, Timestamp last_updated, int fk_oid, String uid){
         super();
         this.setId(id);
-        this.setDate(date);
         this.setLast_updated(last_updated);
         this.setFk_oid(fk_oid);
-
+        this.setUid(uid);
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,19 +50,19 @@ public class UserEntity {
         this.last_updated = last_updated;
     }
 
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
-
-    public String getFk_oid() {
+    public int getFk_oid() {
         return fk_oid;
     }
 
-    public void setFk_oid(String fk_oid) {
+    public void setFk_oid(int fk_oid) {
         this.fk_oid = fk_oid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
