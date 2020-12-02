@@ -7,6 +7,12 @@ public class Report {
     private String userId;
     private Boolean result;
 
+	public Report(){}
+	public Report(Date date, String userId, Boolean result) {
+		this.date = date;
+		this.userId = userId;
+		this.result = result;
+	}
 	public Date getDate() {
 		return date;
 	}
@@ -30,4 +36,6 @@ public class Report {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+
 }

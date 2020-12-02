@@ -7,6 +7,7 @@ import com.covidroomtracker.services.MeetingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 
 @RequestMapping("/api/v1/meetings")
@@ -22,8 +23,8 @@ public class MeetingsController {
     }
 
     @PostMapping
-    public void addMeetings(@RequestBody List<Meeting> meetings){
-
+    public void addMeetings(@RequestBody List<MeetingsEntity> meetings){
+        meetingsService.insertMeetings(meetings);
     }
 
 }

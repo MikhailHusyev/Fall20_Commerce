@@ -60,7 +60,7 @@ public class MeetingsEntity {
     public void setFk_rmid(String fk_rmid) { this.fk_rmid = fk_rmid;
     }
 
-    public Date getMeetingDate() {
+    public Timestamp getMeetingDate() {
         return meeting_date;
     }
 
