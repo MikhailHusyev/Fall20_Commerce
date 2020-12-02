@@ -4,7 +4,7 @@ import { ErrorPageComponent } from './public/error_page/errorpage.component';
 
 export const appRoutes: Routes = [
   {
-    path: '',
+    path: 'public',
     loadChildren: () =>
       import('./public/public.module').then((m) => m.PublicModule),
   },

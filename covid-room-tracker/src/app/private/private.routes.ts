@@ -8,7 +8,8 @@ import { MsalGuard } from '@azure/msal-angular';
 export const privateRoutes: Routes = [
   { path: 'meetings', component: DashBoardComponent },
   { path: 'report', component: ReportComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile*', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
 ];
 
 privateRoutes.forEach((item) => {
