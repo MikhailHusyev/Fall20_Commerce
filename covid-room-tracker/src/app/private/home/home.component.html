@@ -2,20 +2,34 @@
   <side-panel></side-panel>
   <div class="contianer-fluid"></div>
   <div class="row card-row top-margin align-items-center">
-    <div class="card shadow w-100">
+    <div class="card shadow">
       <div class="card-body">
         <h1 class="card-title default-thin default-green">Health Report</h1>
         <hr />
         <div class="row align-items-center">
           <div class="col-md-4">
-            <div>
-              <p *ngIf="!displayElement; else showThis">
-                You have not been exposed to COVID-19
-              </p>
-              <ng-template #showThis>
-                <p class="alert">You have been recently exposed to COVID-19.</p>
-              </ng-template>
+            <div *ngIf="!displayElement; else showThis">
+              <img
+                class="img-fluid img-adjust"
+                src="../../../assets/home_page/healthy.webp"
+              />
+              <p>You have not been exposed to COVID-19</p>
             </div>
+            <ng-template #showThis>
+              <img
+                class="img-fluid"
+                src="../../../assets/home_page/womansick.webp"
+              />
+              <p class="alert">You have been recently exposed to COVID-19.</p>
+            </ng-template>
+            <button
+              type="button"
+              mat-raised-button
+              class="btn btn-style"
+              (click)="contaminationCheck()"
+            >
+              Tracing Check
+            </button>
           </div>
         </div>
       </div>

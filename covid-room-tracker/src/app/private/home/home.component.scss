@@ -1,6 +1,11 @@
 @import "../dashboard_base/dashboard.component.scss";
-
 .alert {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
+}
+
+.img-adjust {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 25px;
 }
