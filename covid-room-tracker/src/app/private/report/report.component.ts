@@ -33,7 +33,10 @@ export class ReportComponent implements OnInit {
     reportForm.fk_uid = localStorage.getItem('profile');
     reportForm.fk_oid = 'Commerce Bank';
     this.http
-      .post<Report>('http://localhost:8080/api/v1/reports/report', reportForm)
+      .post<Report>(
+        environment.apiBaseUrl + '/api/v1/reports/report',
+        reportForm
+      )
       .subscribe((Response) => {
         this.hideLoader();
       });

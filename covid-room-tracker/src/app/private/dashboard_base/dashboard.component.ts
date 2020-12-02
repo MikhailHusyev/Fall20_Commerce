@@ -3,7 +3,14 @@ import { IRoom } from '../models/room.model';
 import { SwiperOptions } from 'swiper';
 import { PaginationOptions } from 'swiper/types/components/pagination';
 import { ScrollbarOptions } from 'swiper/types/components/scrollbar';
-import { startOfDay, subDays, addDays, isSameDay, isSameMonth } from 'date-fns';
+import {
+  startOfDay,
+  subDays,
+  addDays,
+  isSameDay,
+  isSameMonth,
+  addHours,
+} from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -14,6 +21,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthError, InteractionRequiredAuthError } from 'msal';
 import { MeetingService } from '../services/meetings.service';
 import { Meeting } from '../models/meeting.model';
+import { title } from 'process';
 
 const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me/events';
 @Component({
@@ -124,7 +132,6 @@ export class DashBoardComponent implements OnInit {
           ' Location: ' +
           value.location?.displayName,
       };
-
       let meeting: Meeting = {
         fk_oid: 'Commerce Bank',
         fk_uid: localStorage.getItem('profile'),
@@ -132,8 +139,9 @@ export class DashBoardComponent implements OnInit {
         mid: value.id,
         fk_rmid: value.location?.displayName,
       };
-      this.meetings.push(meeting);
+
       this.events.push(calendarEvent);
+      this.meetings.push(meeting);
     }
     this.meetingService.addMeetings(this.meetings);
   }

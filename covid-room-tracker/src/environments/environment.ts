@@ -8,7 +8,7 @@ export const environment = {
   authority: 'https://login.microsoftonline.com/common',
   redirectUrl: 'http://localhost:4200',
   returnUrl: 'https://covid-room-tracker.herokuapp.com',
-  apiBaseUrl: 'http://localhost:8080/',
+  apiBaseUrl: 'http://localhost:8080',
 };
 
 /*

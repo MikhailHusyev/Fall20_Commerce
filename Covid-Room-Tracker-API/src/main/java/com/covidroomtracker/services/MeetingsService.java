@@ -48,7 +48,12 @@ public class MeetingsService {
     }
 
     public void insertMeetings(List<MeetingsEntity> meetings){
-        meetingsRepository.saveAll(meetings);
+        try{
+
+            meetingsRepository.saveAll(meetings);
+        }catch(Exception ex){
+
+        }
     }
 
     public MeetingsEntity getUserMeetings(String userId){
