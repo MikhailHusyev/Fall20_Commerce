@@ -33,7 +33,7 @@ public class MeetingsEntity {
     public MeetingsEntity(int id, Timestamp meeting_date, String fk_uid, String fk_rmid, String fk_oid) {
         super();
         this.setId(id);
-        this.setMeetingDate(meeting_date);
+        this.setMeeting_Date(meeting_date);
         this.setFk_uid(fk_uid);
         this.setFk_rmid(fk_rmid);
         this.setFk_oid(fk_oid);
@@ -60,11 +60,11 @@ public class MeetingsEntity {
     public void setFk_rmid(String fk_rmid) { this.fk_rmid = fk_rmid;
     }
 
-    public Date getMeetingDate() {
+    public Timestamp getMeeting_Date() {
         return meeting_date;
     }
 
-    public void setMeetingDate(Timestamp meeting_date) {
+    public void setMeeting_Date(Timestamp meeting_date) {
         this.meeting_date = meeting_date;
     }
 
